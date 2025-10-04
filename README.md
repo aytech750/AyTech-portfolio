@@ -1,16 +1,34 @@
-# React + Vite
+# AyTech Portfolio 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my personal portfolio website built with **React + Vite + TailwindCSS**.  
+It showcases my projects, skills, and ways to connect with me.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tech Stack
+- ⚛️ React (frontend framework)
+- ⚡ Vite (bundler & dev server)
+- 🎨 TailwindCSS (styling & responsive design)
+- 🔄 GitHub (version control & hosting)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📌 Features
+- Hero section with animated slideshow
+- About section with smooth animations
+- Projects showcase
+- Newsletter subscription with animated form
+- Contact form with validations
+- Footer with social media icons (LinkedIn, Instagram, X, WhatsApp)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Project Setup
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/aytech750/AyTech-portfolio.git
+cd AyTech-portfolio
+npm install
+npm run dev
