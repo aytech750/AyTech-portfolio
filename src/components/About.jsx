@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import profilePic from '../assets/images/IMG_E3462.jpg'; // Replace with your profile pic
+import profilePic from '../assets/images/IMG_E3462.JPG'; // Replace with your profile pic
 
 const skillSets = [
   ["React ⚛️", "Node.js ⚡", "Firebase 🔥"],
