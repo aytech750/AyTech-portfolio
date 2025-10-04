@@ -1,54 +1,67 @@
-import { useEffect, useRef, useState } from "react";
-import profileImg from "../assets/images/IMG_E3462.JPG"; // ✅ Import your profile picture
+import React, { useEffect, useRef, useState } from 'react';
+import profilePic from '../assets/images/IMG_E3462.jpg'; // Replace with your profile pic
 
+const skillSets = [
+  ["React ⚛️", "Node.js ⚡", "Firebase 🔥"],
+  ["HTML 🌐", "CSS 🎨", "JavaScript 🟨"],
+  ["TailwindCSS ✨", "MongoDB 🍃", "Express ⚡"]
+];
 
-export default function AboutMe() {
-  const ref = useRef(null);
-  const [animate, setAnimate] = useState(false);
+export default function About() {
+  const aboutRef = useRef(null);
+  const [currentSet, setCurrentSet] = useState(0);
+  const [fade, setFade] = useState(true);
 
+  // Scroll animation for about section
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setAnimate(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-    return () => observer.disconnect();
+    const aboutContent = aboutRef.current;
+
+    const onScroll = () => {
+      const trigger = window.innerHeight - 100;
+      const top = aboutContent.getBoundingClientRect().top;
+      if (top < trigger) {
+        aboutContent.classList.add('animate');
+      }
+    };
+
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // Trigger on mount
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Rotate skills every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setCurrentSet((prev) => (prev + 1) % skillSets.length);
+        setFade(true);
+      }, 300);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section ref={ref} className="about">
-      <div className={`about-content ${animate ? "animate" : ""}`}>
-        {/* ✅ Profile Image */}
-        <div className="about-image">
-          <img
-            src={profileImg}
-            alt="Michael Ayomide Johnson - Ay Tech"
-            className="profile-pic"
-          />
+    <section id="about" className="about">
+      <div className="about-content" ref={aboutRef}>
+        <div className="profile-wrapper">
+          <img src={profilePic} alt="Profile" className="profile-pic" />
         </div>
-
-        {/* ✅ About Text */}
         <div className="about-text">
           <h2>About Me</h2>
           <p>
-            I’m <span className="highlight">Michael Ayomide Johnson</span>, also
-            known as <strong>Ay Tech</strong> — a{" "}
-            <strong>Full Stack & Mobile Developer</strong> with{" "}
-            <strong>1 years of professional experience</strong>.
+            I am a passionate Full Stack Developer dedicated to crafting modern, responsive, and high-performance web and mobile applications.
           </p>
           <p>
-            I specialize in building scalable applications using{" "}
-            <span className="highlight">React, Node.js, Firebase, and Flutter</span>,
-            with expertise in <span className="highlight">UI/UX design, database
-            management, deployment, and hosting</span>.
+            My expertise spans React, Node.js, and modern front-end frameworks, allowing me to build engaging, interactive, and seamless user experiences.
           </p>
-          <p>
-            My key projects include <strong>Luna</strong> and{" "}
-            <strong>Freenium Data</strong>, where I combined creativity and
-            technology to deliver innovative digital solutions.
-          </p>
+
+          {/* Rotating Skills */}
+          <div className={`hero-keywords ${fade ? 'fade-in' : 'fade-out'}`}>
+            {skillSets[currentSet].map((skill, index) => (
+              <span key={index} className="keyword">{skill}</span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

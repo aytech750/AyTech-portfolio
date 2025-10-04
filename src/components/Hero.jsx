@@ -12,11 +12,11 @@ export default function Hero() {
   // Auto slide
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false); // fade out
+      setFade(false);
       setTimeout(() => {
         setCurrent((prev) => (prev + 1) % images.length);
-        setFade(true); // fade in
-      }, 300); // match CSS transition duration
+        setFade(true);
+      }, 300);
     }, 4000);
     return () => clearInterval(interval);
   }, []);
@@ -26,7 +26,7 @@ export default function Hero() {
     setTimeout(() => {
       setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
       setFade(true);
-    }, 100);
+    }, 300);
   };
 
   const nextSlide = () => {
@@ -34,7 +34,7 @@ export default function Hero() {
     setTimeout(() => {
       setCurrent((prev) => (prev + 1) % images.length);
       setFade(true);
-    }, 100);
+    }, 300);
   };
 
   return (
@@ -43,7 +43,6 @@ export default function Hero() {
         className="hero-slider"
         style={{ backgroundImage: `url(${images[current]})` }}
       >
-        {/* Overlay */}
         <div className={`hero-overlay ${fade ? 'fade-in' : 'fade-out'}`}>
           <h2>Hi, I'm Ay Tech</h2>
           <p>Full Stack Developer | Building modern web & mobile apps</p>
@@ -51,12 +50,8 @@ export default function Hero() {
         </div>
 
         {/* Arrows */}
-        <button className="arrow left" onClick={prevSlide}>
-          &#10094;
-        </button>
-        <button className="arrow right" onClick={nextSlide}>
-          &#10095;
-        </button>
+        <button className="arrow left" onClick={prevSlide}>&#10094;</button>
+        <button className="arrow right" onClick={nextSlide}>&#10095;</button>
 
         {/* Dots */}
         <div className="dots">
@@ -65,7 +60,7 @@ export default function Hero() {
               key={index}
               className={`dot ${index === current ? 'active' : ''}`}
               onClick={() => setCurrent(index)}
-            ></span>
+            />
           ))}
         </div>
       </div>

@@ -1,5 +1,22 @@
-/* Navbar */
-/* Navbar */
+/* =========================
+   General Reset & Fonts
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =========================
+   Navbar
+========================= */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -20,7 +37,6 @@
   transform: translateY(0);
 }
 
-/* Logo */
 .logo {
   font-weight: 700;
   font-size: 24px;
@@ -33,11 +49,10 @@
   transform: scale(1.05);
 }
 
-/* Links */
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 20px;
+  gap: 25px;
 }
 
 .nav-links li a {
@@ -49,11 +64,6 @@
   transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
-  color: #4e54c8;
-}
-
-/* Cool underline hover effect */
 .nav-links li a::after {
   content: "";
   position: absolute;
@@ -65,45 +75,33 @@
   transition: width 0.3s ease;
 }
 
+.nav-links li a:hover {
+  color: #4e54c8;
+}
+
 .nav-links li a:hover::after {
   width: 100%;
 }
 
-.about h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.about p {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 18px;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #222;
-  color: #fff;
-}
+/* =========================
+   Hero Section
+========================= */
 .hero {
   position: relative;
   width: 100%;
-  height: 200vh;
+  height: 100vh;
   overflow: hidden;
 }
 
 .hero-slider {
   width: 100%;
-  height: 100%;
+  height: 170vh;
   background-size: cover;
   background-position: center;
   transition: background-image 1s ease-in-out;
   position: relative;
 }
 
-/* Dark overlay layer (optional) */
 .hero-slider::after {
   content: '';
   position: absolute;
@@ -113,7 +111,6 @@
   z-index: 1;
 }
 
-/* Hero Overlay */
 .hero-overlay {
   position: absolute;
   top: 0; left: 0;
@@ -132,14 +129,14 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.hero-overlay.fade-in {
-  opacity: 1;
-  transform: translateY(0);
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
-.hero-overlay.fade-out {
-  opacity: 0;
-  transform: translateY(20px);
+.fade-out {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
 }
 
 .hero-overlay h2 {
@@ -215,7 +212,9 @@
   background-color: #ff7f50;
 }
 
-
+/* =========================
+   Newsletter Section
+========================= */
 .newsletter {
   text-align: center;
   padding: 80px 20px;
@@ -263,10 +262,115 @@
   background-color: #ff6333;
 }
 
-.newsletter .message {
-  margin-top: 15px;
+/* =========================
+   Contact Section
+========================= */
+.contact {
+  background-color: #f9f9f9;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact input,
+.contact textarea {
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
   font-size: 16px;
-  color: green;
+  width: 100%;
+  resize: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  outline: none;
+  border-color: #ff7f50;
+  box-shadow: 0 0 8px rgba(255,127,80,0.3);
+}
+
+.contact button {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #ff7f50;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact button:hover {
+  background-color: #ff6333;
+  transform: scale(1.05);
+}
+
+/* =========================
+   Footer
+========================= */
+.footer {
+  background: #0f0f0f;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.footer p {
+  margin-bottom: 1rem;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  color: #fff;
+  font-size: 1.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+  transform: scale(1.2);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media screen and (max-width: 1024px) {
+  .about-content { flex-direction: column; gap: 25px; }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar { padding: 15px 20px; }
+  .nav-links { gap: 15px; }
+  .hero-overlay h2 { font-size: 28px; }
+  .hero-overlay p { font-size: 16px; }
+  .about-text h2 { font-size: 24px; }
+  .about-text p { font-size: 16px; }
+  .newsletter h2 { font-size: 28px; }
+  .newsletter p { font-size: 16px; }
+  .contact h2 { font-size: 28px; }
 }
 .about {
   padding: 80px 20px;
@@ -344,187 +448,63 @@
   transform: translateY(0);
   transition: all 0.7s ease-in-out;
 }
+
 .about-content.animate .about-text p:nth-child(2) { transition-delay: 0.3s; }
 .about-content.animate .about-text p:nth-child(3) { transition-delay: 0.6s; }
 
-
-/* Contact Section */
-.contact {
-  background-color: #f9f9f9;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.contact h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.contact form {
-  max-width: 600px;
-  margin: 0 auto;
+/* Rotating Skills */
+.hero-keywords {
   display: flex;
-  flex-direction: column;
   gap: 15px;
-}
-
-.contact input,
-.contact textarea {
-  padding: 12px 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  width: 100%;
-  resize: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact input:focus,
-.contact textarea:focus {
-  outline: none;
-  border-color: #ff7f50;
-  box-shadow: 0 0 8px rgba(255,127,80,0.3);
-}
-
-.contact button {
-  padding: 12px 25px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #ff7f50;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.contact button:hover {
-  background-color: #ff6333;
-  transform: scale(1.05);
-}
-
-.contact .message {
   margin-top: 15px;
-  font-size: 16px;
-  color: green;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #4e54c8;
 }
 
-/* Responsive for mobile */
-@media screen and (max-width: 768px) {
-  .contact {
-    padding: 60px 15px;
-  }
-
-  .contact h2 {
-    font-size: 28px;
-  }
-}
-/* Animation Keyframes */
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.keyword {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlide 0.6s forwards;
 }
 
-/* Hero Description with Animation */
-.hero-description {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 20px 15px;
-  font-family: 'Poppins', sans-serif;
-  color: #1f1f1f;
-  line-height: 1.6;
-  animation: fadeSlideUp 1s ease-out forwards; /* animation added */
+.hero-keywords.fade-in .keyword {
+  animation: fadeSlide 0.6s forwards;
 }
 
-.hero-description h1 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #ff7f50; 
+.hero-keywords.fade-out .keyword {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.hero-description p {
-  font-size: 18px;
-  color: #333333;
-  margin-bottom: 25px;
-}
-
-.hero-description span.highlight {
-  color: #ff7f50;
-  font-weight: 600;
-}
-
-.hero-description::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, #ff7f50, #ff6333);
-  margin: 20px auto 0;
-  border-radius: 2px;
+@keyframes fadeSlide {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-  .hero-description h1 {
-    font-size: 28px;
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
   }
-  .hero-description p {
-    font-size: 16px;
+
+  .profile-pic {
+    width: 200px;
+    height: 200px;
   }
-}
-.footer {
-  background: #0f0f0f;
-  color: #fff;
-  text-align: center;
-  padding: 2rem 1rem;
-  position: relative;
-  z-index: 10;
-}
 
-.footer p {
-  margin-bottom: 1rem;
-  font-size: 14px;
-  color: #aaa;
-}
+  .about-text h2 {
+    font-size: 2rem;
+  }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
+  .about-text p {
+    font-size: 1rem;
+  }
 
-.social-links a {
-  color: #fff;
-  font-size: 1.6rem;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.social-links a:hover {
-  transform: scale(1.2);
-  color: #00acee; /* Default hover color (Twitter blue) */
-}
-
-.social-links a:nth-child(1):hover {
-  color: #0077b5; /* LinkedIn */
-}
-
-.social-links a:nth-child(2):hover {
-  color: #e4405f; /* Instagram */
-}
-
-.social-links a:nth-child(3):hover {
-  color: #1da1f2; /* X (Twitter) */
-}
-
-.social-links a:nth-child(4):hover {
-  color: #25d366; /* WhatsApp */
+  .hero-keywords {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
